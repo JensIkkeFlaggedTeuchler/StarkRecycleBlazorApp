@@ -7,7 +7,7 @@ Stark Recycle. A platform for Stark and its customers to exchange building mater
 
 User = User of application
 
-Client = Host of hobbies
+Business Administrator = Administrator or employee of Stark responsible for the use of the application
 
 Priority: 
 1 = first priority 
