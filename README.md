@@ -14,7 +14,7 @@ Priority:
 2 = second priority 
 3 = third priority
 
-Business Administrator = Developer/Maintainer/Service of application.
+
 | Role         | User Story  | Reason "So that"       | Priority  1-3   | Completed |
 | ------------ | ------------- | ------------ | ------------ | ------------ |
 | User         | As User I want to be able to se Materials/products  | I can explore the different selection of items| 3 |<ul><li>[ ] </li></ul>|
