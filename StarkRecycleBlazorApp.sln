@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarkRecycleBlazorApp", "StarkRecycleBlazorApp\StarkRecycleBlazorApp.csproj", "{0E4D8F37-EED8-4EA1-A201-63DEAB71D012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAndSignUp", "LoginAndSignUp\LoginAndSignUp.csproj", "{761F9C6F-D15F-42A3-994B-2BC7A6EC6F3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginAndSignUp", "LoginAndSignUp\LoginAndSignUp.csproj", "{761F9C6F-D15F-42A3-994B-2BC7A6EC6F3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryProducts", "ClassLibraryProducts\ClassLibraryProducts.csproj", "{00D7E426-E8CB-4842-9F72-7544A276A7B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{761F9C6F-D15F-42A3-994B-2BC7A6EC6F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{761F9C6F-D15F-42A3-994B-2BC7A6EC6F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{761F9C6F-D15F-42A3-994B-2BC7A6EC6F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00D7E426-E8CB-4842-9F72-7544A276A7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D7E426-E8CB-4842-9F72-7544A276A7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D7E426-E8CB-4842-9F72-7544A276A7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D7E426-E8CB-4842-9F72-7544A276A7B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
