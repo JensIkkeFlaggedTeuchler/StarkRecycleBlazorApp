@@ -1,7 +1,68 @@
 ﻿@page "/Environment"
+@using Model;
 
 <h3>Environment</h3>
+<div class="card mx-auto mt-5" style="width: 25rem;">
+    <div class="card-header">
+        Recycle Paint Calculator
+    </div>
+    
+    <div class="card-body">
+        <EditForm Model="@model" OnValidSubmit="HandleValidSubmit">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label>Paint Color:</label>
+                <InputSelect id="Color" @bind-Value="model.Color" class="form-control">
+                    <option value="">--Select option--</option>
+                    <option value="Red">"Red"</option>
+                    <option value="Blue">"Blue"</option>
+                    <option value="Yellow">"Yellow"</option>
+                    <option value="White">"White"</option>
+                    <option value="Black">"Black"</option>
+                </InputSelect>
+            </div> 
+
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <InputNumber id="amount" @bind-Value="model.Amount" class="form-control" />
+            </div>
+
+           
+            <div class="form-group">
+                <label for="weight">Weight</label>
+                <InputNumber id="Weight" @bind-Value="model.Weight" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </EditForm>
+    </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col">Total Tip</div>
+            <div class="col text-right">@tip.ToString("N")</div>
+        </div>
+        <div class="row">
+            <div class="col">Tip per Person</div>
+            @*<div class="col text-right">@tipPerPerson.ToString("N")</div>*@
+        </div>
+    </div>
+</div>
 
 @code {
+    private Paint model = new Paint();
+    private double tip;
+    //private double tipPerPerson;
 
+    private void HandleValidSubmit()
+    {
+        tip = model.Weight * model.Amount;
+        //tip = (int.Parse(model.Percentage) / 100d) * model.Amount;
+        //tipPerPerson = tip / model.PeopleCount;
+
+        Console.WriteLine(tip);
+    }
 }
