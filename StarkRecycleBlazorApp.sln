@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarkRecycleBlazorApp", "St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginAndSignUp", "LoginAndSignUp\LoginAndSignUp.csproj", "{761F9C6F-D15F-42A3-994B-2BC7A6EC6F3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryProducts", "ClassLibraryProducts\ClassLibraryProducts.csproj", "{00D7E426-E8CB-4842-9F72-7544A276A7B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryProducts", "ClassLibraryProducts\ClassLibraryProducts.csproj", "{00D7E426-E8CB-4842-9F72-7544A276A7B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

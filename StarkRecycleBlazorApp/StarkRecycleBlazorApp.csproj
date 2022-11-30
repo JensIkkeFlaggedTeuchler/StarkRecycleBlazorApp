@@ -25,7 +25,6 @@
 
 	<ItemGroup>
 	  <None Include="wwwroot\Images\sdg-4.svg" />
-	  <None Include="wwwroot\Images\Test.png" />
 	</ItemGroup>
 
 </Project>
