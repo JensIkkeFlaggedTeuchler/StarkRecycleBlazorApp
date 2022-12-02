@@ -1,7 +1,219 @@
 ﻿@page "/Environment"
+@using Model;
 
 <h3>Environment</h3>
+<div class="card mx-auto mt-5" style="width: 25rem; float: left">   
+    <div class="card-header">
+        Recycle Paintpoint Calculator
+    </div>
+    
+    <div class= "card-body">
+        <EditForm Model="@model" OnValidSubmit="HandleValidSubmit">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label>Paint Color:</label>
+                <InputSelect id="Color" @bind-Value="model.Color" class="form-control">
+                    <option value="">--Vælg Farve Malling--</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                </InputSelect>
+            </div> 
+
+            <div class="form-group">
+                <label for="amount">Antal</label>
+                <InputNumber id="amount" @bind-Value="model.Amount" class="form-control" />
+            </div>
+
+           
+            <div class="form-group">
+                <label for="weight">Vægt i liter</label>
+                <InputNumber id="Weight" @bind-Value="model.Weight" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </EditForm>
+    </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col">Paint Points Measurements</div>
+            <div class="col text-right">@PaintPoints.ToString("N")</div>
+        </div>
+        <div class="row">
+            <div class="col">Point for din malling</div>
+            <div class="col text-right">@PointsToDestribute.ToString("N")</div>
+        </div>
+    </div>
+</div>
+
+<div class="card mx-auto mt-5" style="width: 25rem;float: right">
+    <div class="card-header">
+        Recycle Tree Point Calculator
+    </div>
+
+    <div class="card-body">
+        <EditForm Model="@model2" OnValidSubmit="HandleValidSubmit2">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label>Trækategori:</label>
+                <InputSelect id="Color" @bind-Value="model.Name" class="form-control">
+                    <option value="">--Vælg Træ--</option>
+                    <option value="Bøg">Bøg</option>
+                    <option value="Eg">Eg</option>
+                    <option value="Mahogni">Mahogni</option>
+                    <option value="Fyr">Fyr</option>
+                    <option value="Birk">Birk</option>
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label for="Length">Længde i Centimeter</label>
+                <InputNumber id="Length" @bind-Value="model2.Length" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Height">Højde i Centimeter</label>
+                <InputNumber id="Højde" @bind-Value="model2.Height" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Width">Bredde i Centimeter</label>
+                <InputNumber id="Weight" @bind-Value="model2.Width" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <InputNumber id="amount" @bind-Value="model2.Amount" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </EditForm>
+    </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col">Tree Points Measurements</div>
+            <div class="col text-right">@TreePoints.ToString("N")</div>
+        </div>
+        <div class="row">
+            <div class="col">Point for dit træ</div>
+            <div class="col text-right">@TreePointsToDestribute.ToString("N")</div>
+        </div>
+    </div>
+</div>
 
 @code {
+    private Tree model2 = new Tree();
+    private double TreePoints;
+    private double TreePointsToDestribute;
 
+    private void HandleValidSubmit2()
+    {
+        TreePoints = ((model2.Width * model2.Height * model2.Length)/500) * model2.Amount;
+
+        if (TreePoints == 500)
+        {
+            TreePointsToDestribute = 10;
+        }
+        if (TreePoints > 500 && TreePoints <= 1000)
+        {
+            TreePointsToDestribute = 20;
+        }
+        if (TreePoints > 1000 && TreePoints <= 2000)
+        {
+            TreePointsToDestribute = 30;
+        }
+        if (TreePoints > 2000 && TreePoints <= 3000)
+        {
+            TreePointsToDestribute = 40;
+        }
+        if (TreePoints > 3000 && TreePoints <= 4000)
+        {
+            TreePointsToDestribute = 50;
+        }
+        if (TreePoints > 4000 && TreePoints <= 5000)
+        {
+            TreePointsToDestribute = 60;
+        }
+        if (TreePoints > 5000 && TreePoints <= 6000)
+        {
+            TreePointsToDestribute = 70;
+        }
+        if (TreePoints > 6000 && TreePoints <= 7000)
+        {
+            TreePointsToDestribute = 80;
+        }
+        if (TreePoints > 7000 && TreePoints <= 8000)
+        {
+            TreePointsToDestribute = 90;
+        }
+        if (TreePoints > 8000 && TreePoints <= 9000)
+        {
+            TreePointsToDestribute = 100;
+        }
+        if (TreePoints > 9000)
+        {
+            TreePointsToDestribute = 110;
+        }
+    }
+
+
+
+    private Paint model = new Paint();
+    private double PaintPoints;
+    private double PointsToDestribute;
+
+    private void HandleValidSubmit()
+    {
+        PaintPoints = model.Weight * model.Amount;
+
+        if (PaintPoints <= 1)
+        {
+            PointsToDestribute = 10;
+        }
+        else if (PaintPoints > 1 && PaintPoints <= 2)
+        {
+            PointsToDestribute = 20;
+        }
+        else if (PaintPoints > 2 && PaintPoints <= 3)
+        {
+            PointsToDestribute = 30;
+        }
+        else if (PaintPoints > 3 && PaintPoints <= 4)
+        {
+            PointsToDestribute = 40;
+        }
+        else if (PaintPoints > 4 && PaintPoints <= 5)
+        {
+            PointsToDestribute = 50;
+        }
+        else if (PaintPoints > 5 && PaintPoints <= 6)
+        {
+            PointsToDestribute = 60;
+        }
+        else if (PaintPoints > 6 && PaintPoints <= 7)
+        {
+            PointsToDestribute = 70;
+        }
+        else if (PaintPoints > 7 && PaintPoints <= 8)
+        {
+            PointsToDestribute = 50;
+        }
+        else if (PaintPoints > 8 && PaintPoints <= 9)
+        {
+            PointsToDestribute = 60;
+        }
+        else if (PaintPoints > 9)
+        {
+            PointsToDestribute = 100;
+        }
+        Console.WriteLine(PaintPoints);
+    }
 }
