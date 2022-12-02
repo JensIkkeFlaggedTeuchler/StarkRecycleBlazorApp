@@ -1,4 +1,4 @@
-namespace LoginAndSignUp.Data
+namespace StarkRecycleApplication.Data
 {
     public class WeatherForecastService
     {
