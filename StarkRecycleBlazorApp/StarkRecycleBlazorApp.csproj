@@ -20,10 +20,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Model\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Include="wwwroot\Images\sdg-4.svg" />
 	</ItemGroup>
 

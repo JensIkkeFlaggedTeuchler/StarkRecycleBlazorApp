@@ -7,7 +7,6 @@ namespace StarkRecycleBlazorApp.Model
         [Key]
         public int Id { get; set; }
 
-        
         [MaxLength(50)]
         public string Name { get; set; }
 
@@ -15,17 +14,17 @@ namespace StarkRecycleBlazorApp.Model
         public int Amount { get; set; }
         
         // Mål i centimeter
-        [Range(1, 15)]
+        [Range(5, 15)]
         public double Height { get; set; }
 
         // Mål i centimeter
 
-        [Range(1, 50)]
+        [Range(5, 30)]
         public double Width { get; set; }
 
-        // Mål i meter
-        [Range(1, 5)]
-        public int Length { get; set; }
+        // Mål i centimeter
+        [Range(20, 500)]
+        public double Length { get; set; }
 
         public string Condition { get; set; }
         public List<Tree> Trees { get; set; }
