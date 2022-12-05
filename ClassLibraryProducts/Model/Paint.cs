@@ -5,12 +5,11 @@ namespace StarkRecycleBlazorApp.Model
     public class Paint
     {
         [Key]
-        public int Id { get; set; }
+        public int PaintId { get; set; }
         
         [MaxLength(50)]
-        public string Name { get; set; }
-        
-       
+        public string PaintName { get; set; }
+
         public string Color { get; set; }
 
         // Mål i liter
@@ -21,6 +20,5 @@ namespace StarkRecycleBlazorApp.Model
         [Range(1,20)]
         public int Amount { get; set; }
 
-        public List<Paint> Paints { get; set; }
     }
 }

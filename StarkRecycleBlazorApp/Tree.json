@@ -1,0 +1,47 @@
+[
+  {
+    "TreeId": 1,
+    "TreeName": "Bøg",
+    "Amount": 10,
+    "Height": 10,
+    "Width": 20,
+    "Length": 100,
+    "Condition": "God"
+  },
+  {
+    "TreeId": 2,
+    "TreeName": "Eg",
+    "Amount": 10,
+    "Height": 10,
+    "Width": 20,
+    "Length": 100,
+    "Condition": "God"
+  },
+  {
+    "TreeId": 3,
+    "TreeName": "Mahogni",
+    "Amount": 10,
+    "Height": 10,
+    "Width": 20,
+    "Length": 100,
+    "Condition": "God"
+  },
+  {
+    "TreeId": 4,
+    "TreeName": "Fyr",
+    "Amount": 10,
+    "Height": 10,
+    "Width": 20,
+    "Length": 100,
+    "Condition": "God"
+  },
+  {
+    "TreeId": 1,
+    "TreeName": "Birk",
+    "Amount": 10,
+    "Height": 10,
+    "Width": 20,
+    "Length": 100,
+    "Condition": "God"
+  }
+]
