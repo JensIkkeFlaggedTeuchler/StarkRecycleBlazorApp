@@ -1,6 +1,6 @@
 using StarkRecycleWebAPI.Controllers;
 using StarkRecycleBlazorApp.Data;
-
+using StarkRecycleWebAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //builder.Services.AddDbContext<PaintContext>(options => options.UseSqlite());
-builder.Services.AddSingleton<IPaintService, PaintService>();
+builder.Services.AddSingleton<IPostService, PostService>();
+//builder.Services.AddSingleton<IPaintService, PaintService>();
+builder.Services.AddScoped<IPostService, PostService>();
 //builder.Services.AddScoped<IPaintService, SQLitePaintService>();
 var app = builder.Build();
 

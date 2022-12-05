@@ -1,36 +1,36 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClassLibraryProducts;
+using Microsoft.AspNetCore.Mvc;
 using StarkRecycleBlazorApp.Data;
-using ClassLibraryProducts;
 
 
 namespace StarkRecycleWebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PaintController : ControllerBase
+    public class PostController : ControllerBase
     {
-        private readonly ILogger<PaintController> _logger;
-        private IPaintService paintService;
-        public PaintController(ILogger<PaintController> logger,
-                              IPaintService service)
+        private readonly ILogger<PostController> _logger;
+        private IPostService postService;
+        public PostController(ILogger<PostController> logger,
+                              IPostService service)
         {
             _logger = logger;
-            paintService = service;
+            postService = service;
         }
 
-        [HttpGet(Name = "GetPaints")]
-        public async Task<IList<Paint>> GetPaintsAsync()
+        [HttpGet(Name = "GetPosts")]
+        public async Task<IList<Post>> GetPostsAsync()
         {
-            IList<Paint> paints = await paintService.GetPaintsAsync();
-            return paints;
+            IList<Post> posts = await postService.GetPostsAsync();
+            return posts;
         }
 
         [HttpPost]
-        public async void AddPaint([FromBody] Paint paint)
+        public async void AddPost([FromBody] Post post)
         {
             try
             {
-                await paintService.AddPaintAsync(paint);
+                await postService.AddPostAsync(post);
 
             }
             catch (Exception e)
@@ -45,7 +45,7 @@ namespace StarkRecycleWebAPI.Controllers
         {
             try
             {
-                await paintService.RemovePaintAsync(id);
+                await postService.RemovePostAsync(id);
             }
             catch (Exception e)
             {
@@ -56,11 +56,11 @@ namespace StarkRecycleWebAPI.Controllers
 
         [HttpPatch]
         [Route("{id:int}")]
-        public async void EditPaint([FromBody] Paint paint)
+        public async void EditPaint([FromBody] Post post)
         {
             try
             {
-                await paintService.EditPaintAsync(paint);
+                await postService.EditPostAsync(post);
             }
             catch (Exception e)
             {

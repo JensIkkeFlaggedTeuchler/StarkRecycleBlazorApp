@@ -1,5 +1,9 @@
 ﻿@page "/Environment"
 @using ClassLibraryProducts;
+@using StarkRecycleBlazorApp.Data
+@*@inject IPostService PostData*@
+
+@inject NavigationManager NavMgr
 
 <h3>Environment</h3>
 <div class="card mx-auto mt-5" style="width: 25rem; float: left">   
@@ -109,7 +113,62 @@
     </div>
 </div>
 
+@*<h3>Læs om vores tiltag! </h3>
+
+@if (postsToShow == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!postsToShow.Any())
+{
+    <p>
+        <em>En fejl er sket med at indlæse Posts</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>PostDate</th>
+                <th>Description?</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in postsToShow)
+            {
+                <tr>
+                    <td>@item.PostID</td>
+                    <td>@item.PostDate</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.AuthorFirstname</td>
+                    <td>@item.AuthorLastname</td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+}
+
+
+
 @code {
+    //private IList<Post> postsToShow;
+    //private IList<Post> allPosts;
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    allPosts = await PostData.GetPostsAsync();
+
+
+    //    postsToShow = allPosts;
+    //}
     private Tree model2 = new Tree();
     private double TreePoints;
     private double TreePointsToDestribute;
