@@ -1,6 +1,6 @@
 ﻿<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">LoginAndSignUp</a>
+        <a class="navbar-brand" href="">Stark Recycle</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,36 +11,36 @@
     <nav class="flex-column">
     <AuthorizeView>
         <Autorited>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="Home" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Forside
+                    </NavLink>
+                </div>
          <div class="nav-item px-3">
             <NavLink class="nav-link" href="Environment">
-                <span class="oi oi-plus" aria-hidden="true"></span> Miljøtiltag
+                <span class="oi oi-globe" aria-hidden="true"></span> Miljøtiltag
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="ShoppingCart">
-                <span class="oi oi-plus" aria-hidden="true"></span> Indkøbskurv
+                <span class="oi oi-basket" aria-hidden="true"></span> Indkøbskurv
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="AboutUsPage">
+                <span class="oi oi-info" aria-hidden="true"></span> Om Stark Recycle
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="ContactPage">
-                <span class="oi oi-plus" aria-hidden="true"></span> Kontakt
+                <span class="oi oi-envelope-closed" aria-hidden="true"></span> Kontakt
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="ProfilePage">
-                <span class="oi oi-plus" aria-hidden="true"></span> Profil
+                <span class="oi oi-person" aria-hidden="true"></span> Profil
             </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> CounterTest
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
+            </div>
         </Autorited>
     </AuthorizeView>
     </nav>
