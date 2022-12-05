@@ -53,6 +53,10 @@
             <div class="col">Point for din malling</div>
             <div class="col text-right">@PointsToDestribute.ToString("N")</div>
         </div>
+        <div class="row">
+            <div class="col">Kg CO2 sparet</div>
+            <div class="col text-right">@CarbonPaintPoints.ToString("N")</div>
+        </div>
     </div>
 </div>
 
@@ -109,6 +113,10 @@
         <div class="row">
             <div class="col">Point for dit træ</div>
             <div class="col text-right">@TreePointsToDestribute.ToString("N")</div>
+        </div>
+        <div class="row">
+            <div class="col">Kg CO2 sparet</div>
+            <div class="col text-right">@CarbonTreePoints.ToString("N")</div>
         </div>
     </div>
 </div>
@@ -172,10 +180,12 @@ else
     private Tree model2 = new Tree();
     private double TreePoints;
     private double TreePointsToDestribute;
+    private double CarbonTreePoints;
 
     private void HandleValidSubmit2()
     {
         TreePoints = ((model2.Width * model2.Height * model2.Length)/500) * model2.Amount;
+        CarbonTreePoints = TreePoints * 0.39;
 
         if (TreePoints == 500)
         {
@@ -228,10 +238,12 @@ else
     private Paint model = new Paint();
     private double PaintPoints;
     private double PointsToDestribute;
+    private double CarbonPaintPoints;
 
     private void HandleValidSubmit()
     {
         PaintPoints = model.Weight * model.Amount;
+        CarbonPaintPoints = PaintPoints * 2.716;
 
         if (PaintPoints <= 1)
         {
@@ -275,4 +287,6 @@ else
         }
         Console.WriteLine(PaintPoints);
     }
+
+   
 }
