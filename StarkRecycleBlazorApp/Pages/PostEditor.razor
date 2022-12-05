@@ -29,11 +29,15 @@
                 <td>@item.Description</td>
                 <td>@item.AuthorFirstname</td>
                 <td>@item.AuthorLastname</td>
+                     <td>
+                    <button @onclick="@(() => RemovePost(item.PostID))">
+                    <i class="oi oi-trash" style="color:red"/>
+                    </button>
+                  </td>
             </tr>
         }
     </tbody>
 </table>
-    
 </div>
 
 <h2> Tilføj Post</h2>
@@ -105,7 +109,13 @@
 
 
 @code {
-
+    private void RemovePost(int postId)
+    {
+        Post postToRemove = allPosts.First(t => t.PostID == postId);
+        PostData.RemovePostAsync(postId);
+        allPosts.Remove(postToRemove);
+        postsToShow.Remove(postToRemove);
+    }
     private IList<Post> postsToShow;
     private IList<Post> allPosts;
 
