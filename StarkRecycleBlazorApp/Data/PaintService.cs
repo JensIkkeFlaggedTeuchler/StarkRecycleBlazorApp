@@ -1,5 +1,5 @@
-﻿using StarkRecycleBlazorApp.Model;
-using StarkRecycleBlazorApp.Data;
+﻿using StarkRecycleBlazorApp.Data;
+using ClassLibraryProducts;
 using System.Text.Json;
 
 namespace StarkRecycleBlazorApp.Data

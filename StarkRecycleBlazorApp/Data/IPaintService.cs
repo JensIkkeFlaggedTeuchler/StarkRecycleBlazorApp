@@ -1,4 +1,4 @@
-﻿using StarkRecycleBlazorApp.Model;
+﻿using ClassLibraryProducts;
 namespace StarkRecycleBlazorApp.Data
 {
     public interface IPaintService

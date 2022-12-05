@@ -1,4 +1,4 @@
-﻿using StarkRecycleBlazorApp.Model;
+﻿using ClassLibraryProducts;
 using StarkRecycleBlazorApp.Data;
 using System.Text.Json;
 

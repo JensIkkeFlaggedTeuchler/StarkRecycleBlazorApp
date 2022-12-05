@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StarkRecycleBlazorApp.Model;
+using ClassLibraryProducts;
 
 namespace StarkRecycleWebAPI.Data
 {

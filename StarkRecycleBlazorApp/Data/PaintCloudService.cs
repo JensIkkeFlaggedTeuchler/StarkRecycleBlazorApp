@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text;
-using StarkRecycleBlazorApp.Model;
+using ClassLibraryProducts;
 
 namespace StarkRecycleBlazorApp.Data
 {

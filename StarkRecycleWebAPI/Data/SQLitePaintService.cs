@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StarkRecycleBlazorApp.Data;
-using StarkRecycleBlazorApp.Model;
+using ClassLibraryProducts;
 
 namespace StarkRecycleWebAPI.Data
 {
