@@ -1,0 +1,34 @@
+[
+  {
+    "PaintId": 1,
+    "PaintName": "Rød malling",
+    "Color": "Rød",
+    "Weight": 1,
+    "Condition": "God",
+    "Amount": 10
+  },
+  {
+    "PaintId": 2,
+    "PaintName": "Gul malling",
+    "Color": "Gul",
+    "Weight": 1,
+    "Condition": "God",
+    "Amount": 10
+  },
+  {
+    "PaintId": 3,
+    "PaintName": "Hvid malling",
+    "Color": "Hvid",
+    "Weight": 1,
+    "Condition": "God",
+    "Amount": 10
+  },
+  {
+    "PaintId": 3,
+    "PaintName": "Hvid malling",
+    "Color": "Hvid",
+    "Weight": 1,
+    "Condition": "God",
+    "Amount": 10
+  }
+]

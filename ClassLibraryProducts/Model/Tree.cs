@@ -5,10 +5,10 @@ namespace StarkRecycleBlazorApp.Model
     public class Tree
     {
         [Key]
-        public int Id { get; set; }
+        public int TreeId { get; set; }
 
         [MaxLength(50)]
-        public string Name { get; set; }
+        public string TreeName { get; set; }
 
         [Range(1, 100)]
         public int Amount { get; set; }
@@ -27,6 +27,5 @@ namespace StarkRecycleBlazorApp.Model
         public double Length { get; set; }
 
         public string Condition { get; set; }
-        public List<Tree> Trees { get; set; }
     }
 }
