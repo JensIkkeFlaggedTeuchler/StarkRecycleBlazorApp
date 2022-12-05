@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginAndSignUp", "LoginAndS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryProducts", "ClassLibraryProducts\ClassLibraryProducts.csproj", "{00D7E426-E8CB-4842-9F72-7544A276A7B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarkRecycleWebAPI", "StarkRecycleWebAPI\StarkRecycleWebAPI.csproj", "{3E13CA5E-9E27-4B2F-9F2C-F7DF18D4FCF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarkRecycleWebAPI", "StarkRecycleWebAPI\StarkRecycleWebAPI.csproj", "{3E13CA5E-9E27-4B2F-9F2C-F7DF18D4FCF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

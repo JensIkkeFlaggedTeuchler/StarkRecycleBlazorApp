@@ -1,7 +1,7 @@
 ﻿@page "/Environment"
 @using ClassLibraryProducts;
 @using StarkRecycleBlazorApp.Data
-@*@inject IPostService PostData*@
+@inject IPostService PostData
 
 @inject NavigationManager NavMgr
 
@@ -121,7 +121,9 @@
     </div>
 </div>
 
-@*<h3>Læs om vores tiltag! </h3>
+<div>
+    <h3>Læs om vores tiltag! </h3>
+</div>
 
 @if (postsToShow == null)
 {
@@ -137,12 +139,25 @@ else if (!postsToShow.Any())
 }
 else
 {
+   @* <p> //Tester for at se hvordan man kan opsætte det til at se mere ud som en website post 
+        @foreach (var item in postsToShow)
+        {
+            
+                <p>@item.PostID</p>
+                <p>@item.PostDate</p>
+                <p>@item.Title</p>
+                <p>@item.Description</p>
+                <p>@item.AuthorFirstname</p>
+                <p>@item.AuthorLastname</p>
+            
+        }
+    </p>*@
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
                 <th>PostDate</th>
+                <th>Title</th>
                 <th>Description?</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
@@ -161,22 +176,25 @@ else
                 </tr>
             }
         </tbody>
-    </table>*@
+    </table>
+
+   
+   
 }
 
 
 
 @code {
-    //private IList<Post> postsToShow;
-    //private IList<Post> allPosts;
+    private IList<Post> postsToShow;
+    private IList<Post> allPosts;
 
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    allPosts = await PostData.GetPostsAsync();
+    protected override async Task OnInitializedAsync()
+    {
+        allPosts = await PostData.GetPostsAsync();
 
 
-    //    postsToShow = allPosts;
-    //}
+        postsToShow = allPosts;
+    }
     private Tree model2 = new Tree();
     private double TreePoints;
     private double TreePointsToDestribute;

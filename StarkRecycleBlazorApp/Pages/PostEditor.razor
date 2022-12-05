@@ -1,0 +1,134 @@
+﻿@page "/PostEditor" 
+@using ClassLibraryProducts;
+@using StarkRecycleBlazorApp.Data
+
+@inject IPostService PostData
+@inject NavigationManager NavMgr
+
+<h3>PostEditor</h3>
+<div
+    <h3> Posts</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>PostDate</th>
+            <th>Title</th>
+            <th>Description?</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in postsToShow)
+        {
+            <tr>
+                <td>@item.PostID</td>
+                <td>@item.PostDate</td>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.AuthorFirstname</td>
+                <td>@item.AuthorLastname</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    
+</div>
+
+<h2> Tilføj Post</h2>
+<EditForm Model="@newPostItem" OnValidSubmit="@AddNewPost">
+   <DataAnnotationsValidator />
+   <ValidationSummary />
+   <div class="form-group"> Post Id:<br />
+        <InputNumber @bind-Value="newPostItem.PostID" /> 
+      </div>
+    <div class="form-group">
+        PostDate:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.PostDate" />
+    </div>
+      <div class="form-group"> Title:<br /> 
+   <InputTextArea rows="4" @bind-Value="newPostItem.Title" />
+         </div>
+    <div class="form-group">
+        Description:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.Description" />
+    </div>
+    <div class="form-group">
+        Forfatter fornavn:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.AuthorFirstname" />
+    </div>
+    <div class="form-group">
+        Forfatter efternavn:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.AuthorLastname" />
+    </div>
+   <p class="actions">
+   <button class="btn btn-outline-dark" type="submit">Create</button>
+      </p>
+   </EditForm>
+
+
+
+   <EditForm Model="@postToEdit" OnValidSubmit="@Save">
+   <DataAnnotationsValidator/>
+   <ValidationSummary/>
+   <div class="form-group">
+      User Id:<br/>
+      <InputNumber @bind-Value="postToEdit.PostID"/>
+      </div>
+    <div class="form-group">
+        PostDate:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.PostDate" />
+    </div>
+    <div class="form-group">
+        Title:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.Title" />
+    </div>
+    <div class="form-group">
+        Description:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.Description" />
+    </div>
+    <div class="form-group">
+        Forfatter fornavn:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.AuthorFirstname" />
+    </div>
+    <div class="form-group">
+        Forfatter efternavn:<br />
+        <InputTextArea rows="4" @bind-Value="newPostItem.AuthorLastname" />
+    </div>
+   <p class="actions">
+     <button class="btn btn-outline-dark" type="submit">Save</button>
+     </p>
+   </EditForm>
+
+
+
+
+@code {
+
+    private IList<Post> postsToShow;
+    private IList<Post> allPosts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allPosts = await PostData.GetPostsAsync();
+        postsToShow = allPosts;
+        postToEdit = await PostData.GetPostByIdAsync(Id);
+    }
+    private Post newPostItem = new Post();
+    private void AddNewPost()
+    {
+        PostData.AddPostAsync(newPostItem);
+    }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private Post postToEdit = null;
+
+
+    private void Save()
+    {
+        PostData.EditPostAsync(postToEdit);
+    }
+}

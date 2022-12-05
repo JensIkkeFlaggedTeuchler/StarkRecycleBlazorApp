@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using ClassLibraryProducts
 @using StarkRecycleBlazorApp.Data
+@inject NavigationManager NavMgr
 
 
 
@@ -17,75 +18,12 @@ Se vores kollektion af nye varer på lager!
 <p>Hvis du gerne vil aflevere dit eget restmaterialle i en byttehandel for StarkPoints, så følg guiden her:</p>
 
 
-
-@*<h3>Læs om vores tiltag! </h3>
-
-@if (postsToShow == null) 
-{    
-   <p>
-      <em>Loading...</em>    
-   </p>
-} 
-else if (!postsToShow.Any()) 
-{
-   <p>
-      <em>En fejl er sket med at indlæse Posts</em>
-      </p>
-} 
-else 
-{
-   <table class="table">
-      <thead>
-         <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>PostDate</th>
-            <th>Description?</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-         </tr>
-      </thead>
-      <tbody>
-       @foreach (var item in postsToShow) 
-       {
-          <tr>
-             <td>@item.PostID</td>
-             <td>@item.PostDate</td>
-             <td>@item.Title</td>
-             <td>@item.Description</td>
-             <td>@item.AuthorFirstname</td>
-             <td>@item.AuthorLastname</td>
-          </tr>
-       }
-       </tbody>
-       </table>
-}*@
-
-
-
-@*@code 
-{
-    private IList<Post> postsToShow;
-    private IList<Post> allPosts;
-
-    protected override async Task OnInitializedAsync()
+<p>
+<button @onclick=@Navigate>Til PostEditor</button>
+</p>
+@code {
+    void Navigate()
     {
-        allPosts = await PostData.GetPostsAsync();
-
-
-        postsToShow = allPosts;
+        NavMgr.NavigateTo("PostEditor");
     }
-    }
-
-    //private void RemoveTodo(int todoId) 
-    //{        
-    //    Todo todoToRemove = allPosts.First(t => t.TodoId == todoId);
-    //    TodoData.RemoveTodoAsync(todoId);
-    //    allPosts.Remove(todoToRemove);
-    //    postsToShow.Remove(todoToRemove);
-    //}
-
-    //private void Edit(int id)
-    //{
-    //   NavMgr.NavigateTo($"Edit/{id}");
-    //}*@
+}
