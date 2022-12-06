@@ -2,9 +2,8 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="">
             <img src="/Images/stark-Recycle1.png" width="300" height="100" style="vertical-align:top;margin:-27px -10px" />
-
         </a>
-        
+
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,39 +14,39 @@
     <nav class="flex-column">
         <AuthorizeView>
         <Autorited>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="Home" Match="NavLinkMatch.All">
-                        <span class="oi oi-home" aria-hidden="true"></span> <h5>Forside</h5>
-                    </NavLink>
-                </div>
-         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="Environment">
-                <span class="oi oi-globe" aria-hidden="true"></span> Miljøtiltag
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> <h5>Dashboard</h5>
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="ShoppingCart">
-                <span class="oi oi-basket" aria-hidden="true"></span> Indkøbskurv
+            <NavLink class="nav-link" href="Category">
+                <span class="oi oi-list" aria-hidden="true"></span> Category
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="AboutUsPage">
-                <span class="oi oi-info" aria-hidden="true"></span> Om Stark Recycle
+            <NavLink class="nav-link" href="RecycleMaterials">
+                <span class="oi oi-globe" aria-hidden="true"></span> Recycle Materials
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="ContactPage">
-                <span class="oi oi-envelope-closed" aria-hidden="true"></span> Kontakt
+            <NavLink class="nav-link" href="Stock">
+                <span class="oi oi-basket" aria-hidden="true"></span> Stock
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="ProfilePage">
-                <span class="oi oi-person" aria-hidden="true"></span> Profil
+            <NavLink class="nav-link" href="Orders">
+                <span class="oi oi-tag" aria-hidden="true"></span> Orders
             </NavLink>
-            </div>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Master">
+                <span class="oi oi-person" aria-hidden="true"></span> Master
+            </NavLink>
+        </div>
         </Autorited>
-    </AuthorizeView>
-    </nav>
+        </AuthorizeView>
+        </nav>
 </div>
 
 @code {
