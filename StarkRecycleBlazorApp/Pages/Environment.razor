@@ -6,7 +6,7 @@
 @inject NavigationManager NavMgr
 
 <h3>Environment</h3>
-<div class="card mx-auto mt-5" style="width: 25rem; float: left">   
+@*<div class="card mx-auto mt-5" style="width: 25rem; float: left">   
     <div class="card-header">
         Recycle Paintpoint Calculator
     </div>
@@ -119,7 +119,7 @@
             <div class="col text-right">@CarbonTreePoints.ToString("N")</div>
         </div>
     </div>
-</div>
+</div>*@
 
 <div>
     <h3>Læs om vores tiltag! </h3>
@@ -198,116 +198,116 @@ else
 
 
     
-    private Tree model2 = new Tree();
-    private double TreePoints;
-    private double TreePointsToDestribute;
-    private double CarbonTreePoints;
+    //private Tree model2 = new Tree();
+    //private double TreePoints;
+    //private double TreePointsToDestribute;
+    //private double CarbonTreePoints;
 
-    private void HandleValidSubmit2()
-    {
-        TreePoints = ((model2.Width * model2.Height * model2.Length)/500) * model2.Amount;
-        CarbonTreePoints = TreePoints * 0.39;
+    //private void HandleValidSubmit2()
+    //{
+    //    TreePoints = ((model2.Width * model2.Height * model2.Length)/500) * model2.Amount;
+    //    CarbonTreePoints = TreePoints * 777.5;
 
-        if (TreePoints == 500)
-        {
-            TreePointsToDestribute = 10;
-        }
-        if (TreePoints > 500 && TreePoints <= 1000)
-        {
-            TreePointsToDestribute = 20;
-        }
-        if (TreePoints > 1000 && TreePoints <= 2000)
-        {
-            TreePointsToDestribute = 30;
-        }
-        if (TreePoints > 2000 && TreePoints <= 3000)
-        {
-            TreePointsToDestribute = 40;
-        }
-        if (TreePoints > 3000 && TreePoints <= 4000)
-        {
-            TreePointsToDestribute = 50;
-        }
-        if (TreePoints > 4000 && TreePoints <= 5000)
-        {
-            TreePointsToDestribute = 60;
-        }
-        if (TreePoints > 5000 && TreePoints <= 6000)
-        {
-            TreePointsToDestribute = 70;
-        }
-        if (TreePoints > 6000 && TreePoints <= 7000)
-        {
-            TreePointsToDestribute = 80;
-        }
-        if (TreePoints > 7000 && TreePoints <= 8000)
-        {
-            TreePointsToDestribute = 90;
-        }
-        if (TreePoints > 8000 && TreePoints <= 9000)
-        {
-            TreePointsToDestribute = 100;
-        }
-        if (TreePoints > 9000)
-        {
-            TreePointsToDestribute = 110;
-        }
-    }
+    //    if (TreePoints == 500)
+    //    {
+    //        TreePointsToDestribute = 10;
+    //    }
+    //    if (TreePoints > 500 && TreePoints <= 1000)
+    //    {
+    //        TreePointsToDestribute = 20;
+    //    }
+    //    if (TreePoints > 1000 && TreePoints <= 2000)
+    //    {
+    //        TreePointsToDestribute = 30;
+    //    }
+    //    if (TreePoints > 2000 && TreePoints <= 3000)
+    //    {
+    //        TreePointsToDestribute = 40;
+    //    }
+    //    if (TreePoints > 3000 && TreePoints <= 4000)
+    //    {
+    //        TreePointsToDestribute = 50;
+    //    }
+    //    if (TreePoints > 4000 && TreePoints <= 5000)
+    //    {
+    //        TreePointsToDestribute = 60;
+    //    }
+    //    if (TreePoints > 5000 && TreePoints <= 6000)
+    //    {
+    //        TreePointsToDestribute = 70;
+    //    }
+    //    if (TreePoints > 6000 && TreePoints <= 7000)
+    //    {
+    //        TreePointsToDestribute = 80;
+    //    }
+    //    if (TreePoints > 7000 && TreePoints <= 8000)
+    //    {
+    //        TreePointsToDestribute = 90;
+    //    }
+    //    if (TreePoints > 8000 && TreePoints <= 9000)
+    //    {
+    //        TreePointsToDestribute = 100;
+    //    }
+    //    if (TreePoints > 9000)
+    //    {
+    //        TreePointsToDestribute = 110;
+    //    }
+    //}
 
 
 
-    private Paint model = new Paint();
-    private double PaintPoints;
-    private double PointsToDestribute;
-    private double CarbonPaintPoints;
+    //private Paint model = new Paint();
+    //private double PaintPoints;
+    //private double PointsToDestribute;
+    //private double CarbonPaintPoints;
 
-    private void HandleValidSubmit()
-    {
-        PaintPoints = model.Weight * model.Amount;
-        CarbonPaintPoints = PaintPoints * 2.716;
+    //private void HandleValidSubmit()
+    //{
+    //    PaintPoints = model.Weight * model.Amount;
+    //    CarbonPaintPoints = PaintPoints * 2.716;
 
-        if (PaintPoints <= 1)
-        {
-            PointsToDestribute = 10;
-        }
-        else if (PaintPoints > 1 && PaintPoints <= 2)
-        {
-            PointsToDestribute = 20;
-        }
-        else if (PaintPoints > 2 && PaintPoints <= 3)
-        {
-            PointsToDestribute = 30;
-        }
-        else if (PaintPoints > 3 && PaintPoints <= 4)
-        {
-            PointsToDestribute = 40;
-        }
-        else if (PaintPoints > 4 && PaintPoints <= 5)
-        {
-            PointsToDestribute = 50;
-        }
-        else if (PaintPoints > 5 && PaintPoints <= 6)
-        {
-            PointsToDestribute = 60;
-        }
-        else if (PaintPoints > 6 && PaintPoints <= 7)
-        {
-            PointsToDestribute = 70;
-        }
-        else if (PaintPoints > 7 && PaintPoints <= 8)
-        {
-            PointsToDestribute = 50;
-        }
-        else if (PaintPoints > 8 && PaintPoints <= 9)
-        {
-            PointsToDestribute = 60;
-        }
-        else if (PaintPoints > 9)
-        {
-            PointsToDestribute = 100;
-        }
-        Console.WriteLine(PaintPoints);
-    }
+    //    if (PaintPoints <= 1)
+    //    {
+    //        PointsToDestribute = 10;
+    //    }
+    //    else if (PaintPoints > 1 && PaintPoints <= 2)
+    //    {
+    //        PointsToDestribute = 20;
+    //    }
+    //    else if (PaintPoints > 2 && PaintPoints <= 3)
+    //    {
+    //        PointsToDestribute = 30;
+    //    }
+    //    else if (PaintPoints > 3 && PaintPoints <= 4)
+    //    {
+    //        PointsToDestribute = 40;
+    //    }
+    //    else if (PaintPoints > 4 && PaintPoints <= 5)
+    //    {
+    //        PointsToDestribute = 50;
+    //    }
+    //    else if (PaintPoints > 5 && PaintPoints <= 6)
+    //    {
+    //        PointsToDestribute = 60;
+    //    }
+    //    else if (PaintPoints > 6 && PaintPoints <= 7)
+    //    {
+    //        PointsToDestribute = 70;
+    //    }
+    //    else if (PaintPoints > 7 && PaintPoints <= 8)
+    //    {
+    //        PointsToDestribute = 50;
+    //    }
+    //    else if (PaintPoints > 8 && PaintPoints <= 9)
+    //    {
+    //        PointsToDestribute = 60;
+    //    }
+    //    else if (PaintPoints > 9)
+    //    {
+    //        PointsToDestribute = 100;
+    //    }
+    //    Console.WriteLine(PaintPoints);
+    //}
 
    
 }
