@@ -144,7 +144,7 @@
     private void HandleValidSubmit2()
     {
         TreePoints = ((model2.Width * model2.Height * model2.Length)/500) * model2.Amount;
-        CarbonTreePoints = TreePoints * 777.5;
+        CarbonTreePoints = ((model2.Width/100) * (model2.Height/100) * (model2.Length/100)) * model2.Amount * 777.5;
 
         if (TreePoints == 500)
         {
