@@ -2,6 +2,7 @@
 using System.Text;
 using ClassLibraryProducts;
 
+// Cloud service for Paint product, 06/12
 namespace StarkRecycleBlazorApp.Data
 {
     public class PaintCloudService: IPaintService

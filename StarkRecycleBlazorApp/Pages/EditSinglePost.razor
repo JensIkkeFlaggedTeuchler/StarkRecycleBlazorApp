@@ -1,0 +1,73 @@
+﻿@page "/EditSinglePost/{Id:int}" 
+@using ClassLibraryProducts;
+@using StarkRecycleBlazorApp.Data
+
+@inject IPostService PostData
+@inject NavigationManager NavMgr
+
+
+@*Edit post er added og virker*@
+
+<h3>EditSinglePost</h3>
+
+
+
+@if (postToEdit == null)
+{
+   <em>Posts not found!</em>
+}
+else
+{
+<EditForm Model="@postToEdit" OnValidSubmit="@EditPost">
+   <DataAnnotationsValidator/>
+   <ValidationSummary/>
+   <div class="form-group">
+      User Id:<br/>
+      <InputNumber @bind-Value="postToEdit.PostID"/>
+      </div>
+    <div class="form-group">
+        PostDate:<br />
+        <InputTextArea rows="4" @bind-Value="postToEdit.PostDate" />
+    </div>
+    <div class="form-group">
+        Title:<br />
+        <InputTextArea rows="4" @bind-Value="postToEdit.Title" />
+    </div>
+    <div class="form-group">
+        Description:<br />
+        <InputTextArea rows="4" @bind-Value="postToEdit.Description" />
+    </div>
+    <div class="form-group">
+        Forfatter fornavn:<br />
+        <InputTextArea rows="4" @bind-Value="postToEdit.AuthorFirstname" />
+    </div>
+    <div class="form-group">
+        Forfatter efternavn:<br />
+        <InputTextArea rows="4" @bind-Value="postToEdit.AuthorLastname" />
+    </div>
+   <p class="actions">
+     <button class="btn btn-outline-dark" type="submit">Save</button>
+     </p>
+   </EditForm>}
+
+@code {
+   
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private Post postToEdit = null;
+
+
+    private void EditPost()
+    {
+        PostData.EditPostAsync(postToEdit);
+        NavMgr.NavigateTo("/PostEditor");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        postToEdit = await PostData.GetPostByIdAsync(Id);
+    }
+}
