@@ -5,7 +5,7 @@
 
 @inject NavigationManager NavMgr
 
-@*07/12 did this today - Charlie*@
+
 
 <div>
     <h3>Læs om vores tiltag! </h3>
@@ -26,22 +26,11 @@ else if (!postsToShow.Any())
 else
 {
    
-    <table class="table">
-        <thead> 
-            <tr>
-                <th>ID</th>
-                <th>PostDate</th>
-                <th>Title</th>
-                <th>Description?</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-            </tr>
-        </thead>
-        <tbody>
+  
+ 
             @foreach (var item in postsToShow)
             {
                 <tr>
-                    <td>@item.PostID</td>
                     <td>@item.PostDate</td>
                     <td>@item.Title</td>
                     <td>@item.Description</td>
@@ -49,8 +38,8 @@ else
                     <td>@item.AuthorLastname</td>
                 </tr>
             }
-        </tbody>
-    </table>
+
+ 
 
    
    
