@@ -8,6 +8,38 @@
 @*Ændret editor lagt i egen razor page*@
 
 <h3>PostEditor</h3>
+
+
+<h2> Tilføj Post</h2>
+<EditForm Model="@newPostItem" OnValidSubmit="@AddNewPost">
+   <DataAnnotationsValidator />
+   <ValidationSummary />
+   <div class="form-group"> Post Id:<br />
+        <InputNumber @bind-Value="newPostItem.PostID" /> 
+      </div>
+    <div class="form-group">
+        PostDate:<br />
+        <InputTextArea rows="1" @bind-Value="newPostItem.PostDate" />
+    </div>
+      <div class="form-group"> Title:<br /> 
+   <InputTextArea rows="2" cols="30"@bind-Value="newPostItem.Title" />
+         </div>
+    <div class="form-group">
+        Description:<br />
+        <InputTextArea rows="10" cols="100" @bind-Value="newPostItem.Description" />
+    </div>
+    <div class="form-group">
+        Forfatter fornavn:<br />
+        <InputTextArea rows="1" @bind-Value="newPostItem.AuthorFirstname" />
+    </div>
+    <div class="form-group">
+        Forfatter efternavn:<br />
+        <InputTextArea rows="1" @bind-Value="newPostItem.AuthorLastname" />
+    </div>
+   <p class="actions">
+   <button class="btn btn-outline-dark" type="submit">Create</button>
+      </p>
+   </EditForm>
 <div
     <h3> Posts</h3>
 <table class="table">
@@ -22,62 +54,30 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in postsToShow)
-        {
-            <tr>
-                <td>@item.PostID</td>
-                <td>@item.PostDate</td>
-                <td>@item.Title</td>
-                <td>@item.Description</td>
-                <td>@item.AuthorFirstname</td>
-                <td>@item.AuthorLastname</td>
-                     <td>
-                    <button @onclick="@(() => RemovePost(item.PostID))">
-                    <i class="oi oi-trash" style="color:red"/>
-                    </button>
-                  </td>
-                      <td>
-                     <button @onclick="@(() => Edit(item.PostID))">
-                     <i class="oi oi-pencil" style="color:#1b6ec2"/>
-                     </button>
-                  </td>
-            </tr>
-        }
+            @foreach (var item in postsToShow)
+            {
+                <tr>
+                    <td>@item.PostID</td>
+                    <td>@item.PostDate</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.AuthorFirstname</td>
+                    <td>@item.AuthorLastname</td>
+                         <td>
+                        <button @onclick="@(() => RemovePost(item.PostID))">
+                        <i class="oi oi-trash" style="color:red"/>
+                        </button>
+                      </td>
+                          <td>
+                         <button @onclick="@(() => Edit(item.PostID))">
+                         <i class="oi oi-pencil" style="color:#1b6ec2"/>
+                         </button>
+                      </td>
+                </tr>
+            }
     </tbody>
 </table>
 </div>
-
-<h2> Tilføj Post</h2>
-<EditForm Model="@newPostItem" OnValidSubmit="@AddNewPost">
-   <DataAnnotationsValidator />
-   <ValidationSummary />
-   <div class="form-group"> Post Id:<br />
-        <InputNumber @bind-Value="newPostItem.PostID" /> 
-      </div>
-    <div class="form-group">
-        PostDate:<br />
-        <InputTextArea rows="4" @bind-Value="newPostItem.PostDate" />
-    </div>
-      <div class="form-group"> Title:<br /> 
-   <InputTextArea rows="4" @bind-Value="newPostItem.Title" />
-         </div>
-    <div class="form-group">
-        Description:<br />
-        <InputTextArea rows="4" @bind-Value="newPostItem.Description" />
-    </div>
-    <div class="form-group">
-        Forfatter fornavn:<br />
-        <InputTextArea rows="4" @bind-Value="newPostItem.AuthorFirstname" />
-    </div>
-    <div class="form-group">
-        Forfatter efternavn:<br />
-        <InputTextArea rows="4" @bind-Value="newPostItem.AuthorLastname" />
-    </div>
-   <p class="actions">
-   <button class="btn btn-outline-dark" type="submit">Create</button>
-      </p>
-   </EditForm>
-
 
 @code {
     private void RemovePost(int postId)
@@ -99,6 +99,7 @@
     private void AddNewPost()
     {
         PostData.AddPostAsync(newPostItem);
+
     }
     private void Edit(int id)
     {

@@ -8,7 +8,7 @@
 
 
 <div>
-    <h3>Læs om vores tiltag! </h3>
+    <h1>Læs om vores tiltag! </h1>
 </div>
 
 @if (postsToShow == null)
@@ -30,13 +30,14 @@ else
  
             @foreach (var item in postsToShow)
             {
-                <tr>
-                    <td>@item.PostDate</td>
-                    <td>@item.Title</td>
-                    <td>@item.Description</td>
-                    <td>@item.AuthorFirstname</td>
-                    <td>@item.AuthorLastname</td>
-                </tr>
+<br />
+        <h3>@item.Title</h3>
+                    <p>@item.PostDate</p>
+                    
+                    <p>@item.Description</p>
+        <p>@item.AuthorFirstname @item.AuthorLastname</p>
+                    
+               
             }
 
  
