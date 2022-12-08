@@ -2,8 +2,10 @@
 @using ClassLibraryProducts
 @using StarkRecycleBlazorApp.Data
 @inject NavigationManager NavMgr
-
-
+@using QRCoder 
+@using System.Drawing
+@using System.Drawing.Imaging
+@using System.IO
 
 <PageTitle>Forside</PageTitle>
 
@@ -17,11 +19,13 @@ Se vores kollektion af nye varer på lager!
 
 <p>Hvis du gerne vil aflevere dit eget restmaterialle i en byttehandel for StarkPoints, så følg guiden her:</p>
 
-
 <p>
 <button @onclick=@Navigate>Til PostEditor</button>
 </p>
+
 @code {
+
+
     void Navigate()
     {
         NavMgr.NavigateTo("PostEditor");
