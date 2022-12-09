@@ -2,85 +2,119 @@
 @using ClassLibraryProducts;
 @using StarkRecycleBlazorApp.Data
 @inject IPostService PostData
-
 @inject NavigationManager NavMgr
-
-<h3>Beregner</h3>
-
-<h6>Udregn hvor mange StarkPoints dit restmateriel er værd og se CO2 besparelsen</h6>
-
+@using QRCoder
+@using System.Drawing
+@using System.Drawing.Imaging
+@using System.IO
 @*Billedets størrelse kan redigeres, udkommenter style sætningen til højre for at ændre på den*@
 @*07/12 ændret udregning for co2 træ - Charlie*@
+@*08/12 added QR kode generering for point uddeling *@
+<h1>Send dine materialer til genbrug hos Stark! </h1>
 
-<img src="/Images/STarkgentrae.PNG" alt="" class="ccm-png ccm-image-block img-responsive bID-4401" @*style="height: 15rem; width: 70rem; float: left"*@>
+<p> </p>
 
+<p>
+
+
+    Byggebranchen producerer en tredjedel af Danmarks affald. Det svarer til at byggebranchen i dag producerer over 4,1 millioner ton affald om året. Det kan vi gøre bedre.
+
+    Verdens råstofressourcer er ikke uendelige, og fremtidens bæredygtige byer skal derfor bogstaveligt talt bygges af affald.
+
+    Hos STARK arbejder vi derfor med en lang række projekter på tværs af værdikæden med det formål at minimere og genanvende mere af vores leverandørers, kunders og vores eget affald.
+
+    Vores affaldsmål
+    STARKs mål for affald frem til 2024 er at reducere mængden af affald med 20 % totalt, samt sikre at minimum 80 % går til genanvendelse.
+   </p>
+
+
+
+<h4>Har du materialle til overs? Få rabat i Stark for dem! </h4>
+
+<p> Som et nyt koncept hos Stark for at nå vores mål om mere genanvendelse kan du aflevere dine overskuds materialer, som malling og træ for rabat point. <br />
+    
+    Brug blot vores Pointudregnere for at se hvor meget rabat du kan opspare ved at sende dine materialer og få genereret en QR som en Stark Medarbejder kan scanne for at give dig dine point i butikken
+ </p>
+
+
+
+
+@* Udregner for malling*@
 <div class="card mx-auto mt-5" style="width: 25rem; float: left">   
-    <div class="card-header">
-        Recycle Paintpoint Calculator
+    @*<img class=" card-img-top" src="/Images/recyclePaint.png" *@
+<div class="card-header bg-dark">
+        <h5 style=" color: white">Point udregner for malling </h5>
+        
+        <p class=" card-text" style="color:white"> Vælg farve og indtast dimensioner og antal af din malling så beregner vores Udregner hvor meget dine Materialer kan være værd for dig og miljøet!</p>
     </div>
     
-    <div class= "card-body">
+    <div class= "card-body bg-secondary">
         <EditForm Model="@model" OnValidSubmit="HandleValidSubmit">
 
             <DataAnnotationsValidator />
             <ValidationSummary />
 
             <div class="form-group">
-                <label>Paint Color:</label>
+                <label>Farve malling:</label>
                 <InputSelect id="Color" @bind-Value="model.Color" class="form-control">
                     <option value="">--Vælg Farve Malling--</option>
-                    <option value="Red">Red</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Yellow">Yellow</option>
-                    <option value="White">White</option>
-                    <option value="Black">Black</option>
+                    <option value="Red">Rød malling</option>
+                    <option value="Blue">Blå malling</option>
+                    <option value="Yellow">Gul malling</option>
+                    <option value="White">Hvis malling</option>
+                    <option value="Black">Sort malling</option>
                 </InputSelect>
             </div> 
 
             <div class="form-group">
-                <label for="amount">Antal</label>
+                <label for="amount">Indtast antal bøtter</label>
                 <InputNumber id="amount" @bind-Value="model.Amount" class="form-control" />
             </div>
 
            
             <div class="form-group">
-                <label for="weight">Vægt i liter</label>
+                <label for="weight">Indtast bøtternes vægt i liter</label>
                 <InputNumber id="Weight" @bind-Value="model.Weight" class="form-control" />
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" style="color:white" class="btn btn-primary btn-block bg-success">Beregn point</button>
+            <button class=" btn btn-primary bg-black" style="color:white " @onclick=@GenerateQRCodeForPaintPoints>Generate QR Code </button>
         </EditForm>
     </div>
 
-    <div class="card-footer">
+    <div class="card-footer bg-success">
         <div class="row">
-            <div class="col">Paint Points Measurements</div>
-            <div class="col text-right">@PaintPoints.ToString("N")</div>
+            <div class="col"> Din malling kan give;</div>
+            <div class="col text-right">@PaintPoints.ToString("N") Rabatpoint</div>
         </div>
-        <div class="row">
+       @* <div class="row">
             <div class="col">Point for din malling</div>
             <div class="col text-right">@PointsToDestribute.ToString("N")</div>
-        </div>
+        </div>  skal nok slettes*@
         <div class="row">
-            <div class="col">Kg CO2 sparet</div>
-            <div class="col text-right">@CarbonPaintPoints.ToString("N")</div>
+            <div class="col">Du sparer miljøet hele @CarbonPaintPoints.ToString("N")CO2 ved at aflevere din malling</div>
         </div>
     </div>
+    <p> <img src="@QRCodeStrPaint" style="width:200px;height:200px;" /> </p>
 </div>
 
-<div class="card mx-auto mt-5" style="width: 25rem;float: none">
-    <div class="card-header">
-        Recycle Tree Point Calculator
-    </div>
+@*Udregner for træ *@
+<div class="card mx-auto mt-5" style="width: 25rem;float: right">
+    @*<img class=" card-img-top" src="/Images/recycleTree.png"*@
+    <div class="card-header bg-dark">
+        <h5 style=" color:White">Point udregner for træ </h5>
 
-    <div class="card-body">
+        <p class=" card-text" style=" color:white"> Vælg Træ kategori og indtast dimensioner og antal af dit træ så beregner vores Udregner hvor meget dine Materialer kan være værd for dig og miljøet!</p>
+    </div>
+    
+    <div class="card-body bg-secondary">
         <EditForm Model="@model2" OnValidSubmit="HandleValidSubmit2">
 
             <DataAnnotationsValidator />
             <ValidationSummary />
 
             <div class="form-group">
-                <label>Trækategori:</label>
+                <label>Vælg kategori af træ:</label>
                 <InputSelect id="Color" @bind-Value="model.PaintName" class="form-control">
                     <option value="">--Vælg Træ--</option>
                     <option value="Bøg">Bøg</option>
@@ -92,108 +126,89 @@
             </div>
 
             <div class="form-group">
-                <label for="Length">Længde i Centimeter</label>
+                <label for="Length">Indtast Længde i CM</label>
                 <InputNumber id="Length" @bind-Value="model2.Length" class="form-control" />
             </div>
             <div class="form-group">
-                <label for="Height">Højde i Centimeter</label>
+                <label for="Height">Indtast Højde i CM</label>
                 <InputNumber id="Højde" @bind-Value="model2.Height" class="form-control" />
             </div>
             <div class="form-group">
-                <label for="Width">Bredde i Centimeter</label>
+                <label for="Width">Indtast Bredde i CM</label>
                 <InputNumber id="Weight" @bind-Value="model2.Width" class="form-control" />
             </div>
 
             <div class="form-group">
-                <label for="amount">Amount</label>
+                <label for="amount">Indtast hvor mange du vil sende</label>
                 <InputNumber id="amount" @bind-Value="model2.Amount" class="form-control" />
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" style="color:white" class="btn btn-primary btn-block bg-success">Beregn point</button>
+            <button class=" btn btn-primary bg-black" style="color:white " @onclick=@GenerateQRCodeForTreePoints>Generate QR Code </button>
         </EditForm>
     </div>
-
-    <div class="card-footer">
+    <div class="card-footer bg-success">
         <div class="row">
-            <div class="col">Tree Points Measurements</div>
-            <div class="col text-right">@TreePoints.ToString("N")</div>
+            <div class="col">Dit træ giver; </div>
+            <div class="col text-right">@TreePoints.ToString("N") Rabatpoint</div>
         </div>
-        <div class="row">
+       @* <div class="row">
             <div class="col">Point for dit træ</div>
             <div class="col text-right">@TreePointsToDestribute.ToString("N")</div>
-        </div>
+        </div>*@
         <div class="row">
-            <div class="col">Kg CO2 sparet</div>
-            <div class="col text-right">@CarbonTreePoints.ToString("N")</div>
+            <div class="col">Du sparer miljøet hele @CarbonTreePoints.ToString("N")CO2 ved at aflevere dit træ </div>
+            @*<div class="col text-right">@CarbonTreePoints.ToString("N")</div>*@
         </div>
     </div>
+    <p> <img src="@QRCodeStrTree" style="width:200px;height:200px;" /> </p>
 </div>
 
-
-   
-
-
-
+<img src="/Images/STarkgentrae.PNG" alt="" class="ccm-png ccm-image-block img-responsive bID-4401" @*style="height: 15rem; width: 70rem; float: bottom" *@>
 
 @code {
-    
-    private Tree model2 = new Tree();
-    private double TreePoints;
-    private double TreePointsToDestribute;
-    private double CarbonTreePoints;
+    string QRCodeStrPaint { get; set; } = "";
 
-    private void HandleValidSubmit2()
+    public void GenerateQRCodeForPaintPoints()
     {
-        TreePoints = ((model2.Width * model2.Height * model2.Length)/500) * model2.Amount;
-        CarbonTreePoints = ((model2.Width/100) * (model2.Height/100) * (model2.Length/100)) * model2.Amount * 777.5;
-
-        if (TreePoints == 500)
+        QRCodeStrPaint = "";
+        if (!string.IsNullOrEmpty((PaintPoints.ToString())))
         {
-            TreePointsToDestribute = 10;
-        }
-        if (TreePoints > 500 && TreePoints <= 1000)
-        {
-            TreePointsToDestribute = 20;
-        }
-        if (TreePoints > 1000 && TreePoints <= 2000)
-        {
-            TreePointsToDestribute = 30;
-        }
-        if (TreePoints > 2000 && TreePoints <= 3000)
-        {
-            TreePointsToDestribute = 40;
-        }
-        if (TreePoints > 3000 && TreePoints <= 4000)
-        {
-            TreePointsToDestribute = 50;
-        }
-        if (TreePoints > 4000 && TreePoints <= 5000)
-        {
-            TreePointsToDestribute = 60;
-        }
-        if (TreePoints > 5000 && TreePoints <= 6000)
-        {
-            TreePointsToDestribute = 70;
-        }
-        if (TreePoints > 6000 && TreePoints <= 7000)
-        {
-            TreePointsToDestribute = 80;
-        }
-        if (TreePoints > 7000 && TreePoints <= 8000)
-        {
-            TreePointsToDestribute = 90;
-        }
-        if (TreePoints > 8000 && TreePoints <= 9000)
-        {
-            TreePointsToDestribute = 100;
-        }
-        if (TreePoints > 9000)
-        {
-            TreePointsToDestribute = 110;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+                QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(PaintPoints.ToString(), QRCodeGenerator.ECCLevel.Q);
+                QRCode qRCode = new QRCode(qRCodeData);
+                using (Bitmap bitmap = qRCode.GetGraphic(20))
+                {
+                    bitmap.Save(ms, ImageFormat.Png);
+                    QRCodeStrPaint = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+                }
+            }
         }
     }
 
 
+    string QRCodeStrTree { get; set; } = "";
+
+    public void GenerateQRCodeForTreePoints()
+    {
+        QRCodeStrTree = "";
+        if (!string.IsNullOrEmpty((TreePoints.ToString())))
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+                QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(TreePoints.ToString(), QRCodeGenerator.ECCLevel.Q);
+                QRCode qRCode = new QRCode(qRCodeData);
+                using (Bitmap bitmap = qRCode.GetGraphic(20))
+                {
+                    bitmap.Save(ms, ImageFormat.Png);
+                    QRCodeStrTree = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
+                }
+            }
+        }
+    }
 
     private Paint model = new Paint();
     private double PaintPoints;
@@ -249,4 +264,62 @@
     }
 
    
+
+    private Tree model2 = new Tree();
+    private double TreePoints;
+    private double TreePointsToDestribute;
+    private double CarbonTreePoints;
+
+    private void HandleValidSubmit2()
+    {
+        TreePoints = ((model2.Width * model2.Height * model2.Length) / 500) * model2.Amount;
+        CarbonTreePoints = ((model2.Width / 100) * (model2.Height / 100) * (model2.Length / 100)) * model2.Amount * 777.5;
+
+        if (TreePoints == 500)
+        {
+            TreePointsToDestribute = 10;
+        }
+        if (TreePoints > 500 && TreePoints <= 1000)
+        {
+            TreePointsToDestribute = 20;
+        }
+        if (TreePoints > 1000 && TreePoints <= 2000)
+        {
+            TreePointsToDestribute = 30;
+        }
+        if (TreePoints > 2000 && TreePoints <= 3000)
+        {
+            TreePointsToDestribute = 40;
+        }
+        if (TreePoints > 3000 && TreePoints <= 4000)
+        {
+            TreePointsToDestribute = 50;
+        }
+        if (TreePoints > 4000 && TreePoints <= 5000)
+        {
+            TreePointsToDestribute = 60;
+        }
+        if (TreePoints > 5000 && TreePoints <= 6000)
+        {
+            TreePointsToDestribute = 70;
+        }
+        if (TreePoints > 6000 && TreePoints <= 7000)
+        {
+            TreePointsToDestribute = 80;
+        }
+        if (TreePoints > 7000 && TreePoints <= 8000)
+        {
+            TreePointsToDestribute = 90;
+        }
+        if (TreePoints > 8000 && TreePoints <= 9000)
+        {
+            TreePointsToDestribute = 100;
+        }
+        if (TreePoints > 9000)
+        {
+            TreePointsToDestribute = 110;
+        }
+    }
+
+
 }
